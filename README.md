@@ -12,4 +12,4 @@ Here's how it works:
 5. You can then delete that complaint data from IndexDb - and keep the rest of the data for future complaints.
 
 Future work:  
--add email sending functionality - from within the app with a timing function so you can schedule complaint emails to be sent.
+    - add email sending functionality - from within the app with a timing function so you can schedule complaint emails to be sent.
