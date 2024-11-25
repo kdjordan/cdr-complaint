@@ -1,9 +1,5 @@
-# React + Vite
+# CDR Complaint Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application allows a user to upload a CDR and create as many complaints as they want.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# cdr-complaint
+They can then easily copy and paste the complaints into a spreadsheet or other document.
