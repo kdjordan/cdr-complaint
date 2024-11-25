@@ -4,7 +4,7 @@ import CSVUploader from './components/CSVUploader';
 import ColumnMappingModal from './components/ColumnMappingModal';
 import GenerateComplaintsModal from './components/GenerateComplaintsModal';
 import Complaint from './components/Complaint';
-import { initDB, getAllComplaints, deleteAllComplaints } from './utils/db';
+import { initDB, getAllComplaints, deleteAllComplaints, deleteAllDatabases } from './utils/db';
 
 function App() {
   const [csvData, setCsvData] = useState([]);
@@ -12,9 +12,20 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isGenerateModalOpen, setIsGenerateModalOpen] = useState(false);
   const [complaints, setComplaints] = useState([]);
+  const [allComplaints, setAllComplaints] = useState([]);
 
   useEffect(() => {
     initDB();
+
+    const handleBeforeUnload = () => {
+      deleteAllDatabases();
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   }, []);
 
   const handleCSVUpload = (data) => {
@@ -34,7 +45,7 @@ function App() {
   const handleGenerateComplaints = async () => {
     const complaints = await getAllComplaints();
     if (complaints.length > 0) {
-      setComplaints(complaints);
+      setAllComplaints(complaints);
       setIsGenerateModalOpen(true);
     } else {
       console.log('No data available to generate complaints');
@@ -42,11 +53,13 @@ function App() {
   };
 
   const generateComplaints = (count) => {
-    const selectedComplaints = complaints.slice(0, count);
-    selectedComplaints.forEach(complaint => {
-      // Logic to handle each complaint
-      console.log('Generated Complaint:', complaint);
-    });
+    const selectedComplaints = allComplaints.slice(0, count);
+    setComplaints(selectedComplaints);
+    console.log('Generated Complaints:', selectedComplaints);
+  };
+
+  const handleDeleteComplaint = (id) => {
+    setComplaints(prevComplaints => prevComplaints.filter(c => c.id !== id));
   };
 
   return (
@@ -82,7 +95,7 @@ function App() {
       />
 
       {complaints.map((complaint, index) => (
-        <Complaint key={index} complaint={complaint} />
+        <Complaint key={index} complaint={complaint} onDelete={handleDeleteComplaint} />
       ))}
     </Container>
   );

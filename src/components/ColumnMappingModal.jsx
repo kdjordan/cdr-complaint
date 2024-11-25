@@ -16,7 +16,7 @@ import {
   Paper,
 } from '@mui/material';
 
-const ColumnMappingModal = ({ open, columns, onClose, onSave, csvData }) => {
+const ColumnMappingModal = ({ open, columns, onClose, csvData }) => {
   const [mappings, setMappings] = useState({});
 
   const handleSave = () => {
@@ -27,7 +27,6 @@ const ColumnMappingModal = ({ open, columns, onClose, onSave, csvData }) => {
           entry[value] = row[key];
         }
       }
-      console.log('Entry:', entry);
       return entry;
     });
     
@@ -38,9 +37,6 @@ const ColumnMappingModal = ({ open, columns, onClose, onSave, csvData }) => {
   };
 
   const options = ['Originating', 'Dialed', 'Date'];
-
-  // console.log('Modal CSV Data:', csvData);
-  // console.log('Modal Columns:', columns);
 
   return (
     <Modal open={open} onClose={onClose}>
