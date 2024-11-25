@@ -2,7 +2,7 @@
 
 This is a React application meant to be run locally.
 
-This application allows a user to upload a CDR and create as many complaints as they want.
+This application allows a user to upload a CSV of CDRs and create as many complaints as they want.
 
 Here's how it works:
 1. Upload a CSV file and see a preview of the data.
@@ -11,5 +11,5 @@ Here's how it works:
 4. When you click the "Generate Complaints" button, you will get a formatted email body that you can copy and paste into your email client.
 5. You can then delete that complaint data from IndexDb - and keep the rest of the data for future complaints.
 
-Future work:
+Future work:  
 -add email sending functionality - from within the app with a timing function so you can schedule complaint emails to be sent.
