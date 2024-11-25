@@ -9,4 +9,7 @@ Here's how it works:
 2. Select the columns that correspond to the complaint fields : Originating Number, Dialed Number, Seizure Date.
 3. This loads the CSV data into IndexDb in the browser with normalized data.
 4. When you click the "Generate Complaints" button, you will get a formatted email body that you can copy and paste into your email client.
-5. Send the email to the appropriate party.
+5. You can then delete that complaint data from IndexDb - and keep the rest of the data for future complaints.
+
+Future work:
+-add email sending functionality - from within the app with a timing function so you can schedule complaint emails to be sent.
