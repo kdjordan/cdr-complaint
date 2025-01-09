@@ -3,9 +3,10 @@ import { Modal, Box, Typography, TextField, Button } from '@mui/material';
 
 const GenerateComplaintsModal = ({ open, onClose, onGenerate }) => {
   const [count, setCount] = useState(1);
+  const [reason, setReason] = useState('');
 
   const handleGenerate = () => {
-    onGenerate(count);
+    onGenerate(count, reason);
     onClose();
   };
 
@@ -29,6 +30,13 @@ const GenerateComplaintsModal = ({ open, onClose, onGenerate }) => {
           type="number"
           value={count}
           onChange={(e) => setCount(e.target.value)}
+          fullWidth
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          label="Reason"
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
           fullWidth
           sx={{ mb: 2 }}
         />

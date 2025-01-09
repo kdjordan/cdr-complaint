@@ -52,8 +52,11 @@ function App() {
     }
   };
 
-  const generateComplaints = (count) => {
-    const selectedComplaints = allComplaints.slice(0, count);
+  const generateComplaints = (count, reason) => {
+    const selectedComplaints = allComplaints.slice(0, count).map(complaint => ({
+      ...complaint,
+      Reason: reason,
+    }));
     setComplaints(selectedComplaints);
     console.log('Generated Complaints:', selectedComplaints);
   };
@@ -94,9 +97,9 @@ function App() {
         onGenerate={generateComplaints}
       />
 
-      {complaints.map((complaint, index) => (
-        <Complaint key={index} complaint={complaint} onDelete={handleDeleteComplaint} />
-      ))}
+      {complaints.length > 0 && (
+        <Complaint complaints={complaints} onDelete={handleDeleteComplaint} />
+      )}
     </Container>
   );
 }
